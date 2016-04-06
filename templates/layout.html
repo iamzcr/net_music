@@ -28,6 +28,15 @@
 	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 	        <li><a href="{{ url_for('singer')}}">歌手</a></li>
 	      </ul>
+            <form class="navbar-form navbar-left" method="get" action="{{ url_for('search') }}" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="s" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                 <li><a href="{{ url_for('login') }}">登录</a></li>
+            </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -35,7 +44,7 @@
 {% block body %}{% endblock %}
 
 <nav class="navbar container navbar-default navbar-fixed-bottom">
-<div class="container" style="text-align: center">
+<div class="container" style="text-align: center;font-size: 20px;line-height: 50px;">
     Power by iamzcr
 </div><!-- /.container-fluid -->
 </nav>

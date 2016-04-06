@@ -3,6 +3,7 @@
 import re
 import json
 import requests
+import hashlib
 # list去重
 def uniq(arr):
     arr2 = list(set(arr))
@@ -42,7 +43,6 @@ class NetEase:
         connection.encoding = "UTF-8"
         connection = json.loads(connection.text)
         return connection
-    # 热门歌手 http://music.163.com/#/discover/artist/
     def top_artists(self, offset=0, limit=100):
         action = 'http://music.163.com/api/artist/top?offset=' + str(offset) + '&total=false&limit=' + str(limit)
         try:
@@ -50,7 +50,6 @@ class NetEase:
             return data['artists']
         except:
             return []
-    # 歌手单曲
     def artists(self, artist_id):
         action = 'http://music.163.com/api/artist/' + str(artist_id)
         try:
@@ -58,3 +57,33 @@ class NetEase:
             return data['hotSongs']
         except:
             return []
+    def login(self, username, password):
+        action = 'http://music.163.com/api/login/'
+        data = {
+            'username': username,
+            'password': hashlib.md5( password ).hexdigest(),
+            'rememberLogin': 'true'
+        }
+        try:
+            return self.httpRequest('POST', action, data)
+        except:
+            return {'code': 501}
+
+    def user_playlist(self, uid, offset=0, limit=100):
+        action = 'http://music.163.com/api/user/playlist/?offset=' + str(offset) + '&limit=' + str(limit) + '&uid=' + str(uid)
+        try:
+            data = self.httpRequest('GET', action)
+            return data['playlist']
+        except:
+            return []
+
+    def search(self, s, stype=1, offset=0, total='true', limit=60):
+        action = 'http://music.163.com/api/search/get/web'
+        data = {
+            's': s,
+            'type': stype,
+            'offset': offset,
+            'total': total,
+            'limit': 60
+        }
+        return self.httpRequest('POST', action, data)

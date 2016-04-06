@@ -6,7 +6,7 @@
 	
 		<div class="list-group">
 			<a class="list-group-item active">
-			    <h4 class="list-group-item-heading">我是歌手</h4>
+			    <h4 class="list-group-item-heading">歌手歌曲</h4>
 			</a>
 	  
 	 	 </div>
@@ -17,12 +17,12 @@
 <div class="container">
   		<table class=" table table-hover">
   			<thead>
-  				<th class="active">歌手id</th>
-  				<th class="active">歌手名字</th>
-  				<th class="active">歌曲数量</th>
-  				<th class="active">歌曲数量</th>
+
+  				<th class="active">歌曲ID</th>
+  				<th class="active">歌曲</th>
+                <th class="active">歌手</th>
+                <th class="active">头像</th>
   				<th class="active">mp3url</th>
-  				<th class="active">头像</th>
   				<th class="active">操作</th>
   			</thead>
   			<tbody>
@@ -31,10 +31,9 @@
 				<tr>
 				  <td class="active">{{song.id}}</td>
 				  <td class="active">{{song.name}}</td>
-				  <td class="active">{{song.song}}</td>
-				  <td class="active">{{song.musicSize}}</td>
+				  <td class="active">{{song.artists[0].name}}</td>
+				  <td class="active"><img width="80px" src="{{song.album.blurPicUrl}}"></td>
 				  <td class="active">{{song.mp3Url}}</td>
-				  <td class="active"><img width="80px" src="{{song.picUrl}}"></td>
 				  <td class="active"><a  href="{{song.mp3Url}}">点击播放</a></td>
 				</tr>
 				 {% endfor %}
