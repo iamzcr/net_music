@@ -20,6 +20,8 @@
   				<th class="active">歌手id</th>
   				<th class="active">歌手名字</th>
   				<th class="active">歌曲数量</th>
+  				<th class="active">歌曲数量</th>
+  				<th class="active">mp3url</th>
   				<th class="active">头像</th>
   				<th class="active">操作</th>
   			</thead>
@@ -29,9 +31,11 @@
 				<tr>
 				  <td class="active">{{song.id}}</td>
 				  <td class="active">{{song.name}}</td>
+				  <td class="active">{{song.song}}</td>
 				  <td class="active">{{song.musicSize}}</td>
+				  <td class="active">{{song.mp3Url}}</td>
 				  <td class="active"><img width="80px" src="{{song.picUrl}}"></td>
-				  <td class="active"><a  href="{{ url_for('song_list',song_id=song.id) }}">点击播放</a></td>
+				  <td class="active"><a  href="{{song.mp3Url}}">点击播放</a></td>
 				</tr>
 				 {% endfor %}
 				{% endif %}

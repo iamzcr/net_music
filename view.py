@@ -22,4 +22,4 @@ def song_list():
 	return render_template("song_list.html",song_list = song_list)
 if __name__ == '__main__':
 	app.debug = True
-	app.run()
+	app.run(host = '0.0.0.0')
