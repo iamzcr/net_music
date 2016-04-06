@@ -1,5 +1,5 @@
 #网易云音乐web
-<p>开发中.............</p>
+<p>呦呦呦.......</p>
 #git
 git clone git@github.com:iamzcr/net_music.git
 #install
