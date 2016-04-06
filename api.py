@@ -57,7 +57,7 @@ class NetEase:
             return data['hotSongs']
         except:
             return []
-    def login(self, username, password):
+    def user_login(self, username, password):
         action = 'http://music.163.com/api/login/'
         data = {
             'username': username,
@@ -67,7 +67,7 @@ class NetEase:
         try:
             return self.httpRequest('POST', action, data)
         except:
-            return {'code': 501}
+            return False
 
     def user_playlist(self, uid, offset=0, limit=100):
         action = 'http://music.163.com/api/user/playlist/?offset=' + str(offset) + '&limit=' + str(limit) + '&uid=' + str(uid)
@@ -77,7 +77,7 @@ class NetEase:
         except:
             return []
 
-    def search(self, s, stype=1, offset=0, total='true', limit=60):
+    def get_search(self, s, stype=1, offset=0, total='true', limit=60):
         action = 'http://music.163.com/api/search/get/web'
         data = {
             's': s,
