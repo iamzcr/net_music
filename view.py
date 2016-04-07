@@ -5,12 +5,18 @@ from flask import Flask,render_template,url_for,request,flash,redirect,session
 from api import NetEase
 app = Flask(__name__)
 app.secret_key = 'my is  some_secret'
+
+#首页，获取榜单信息
 @app.route('/')
-#首页
 def index():
-	net_music_list = NetEase.top_artists(NetEase())
-	print net_music_list
-	return render_template("index.html")
+	hot_music_list = NetEase.hot_song(NetEase())
+	return render_template("index.html",hot_music_list = hot_music_list)
+
+#获取榜单歌曲
+@app.route('/top_music_list/<hot_id>',methods=['GET', 'POST'])
+def top_music_list(hot_id):
+    hot_music_list = NetEase.hot_song_list(NetEase(),hot_id)
+    return render_template("top_music_list.html",hot_music_list = hot_music_list)
 
 #获取歌手信息
 @app.route('/singer')
@@ -40,7 +46,6 @@ def play_list():
 def play_song_list():
     play_id = request.args.get('play_id')
     song_list = NetEase.get_play_song_list(NetEase(),play_id)
-    print  song_list
     return render_template("song_list.html",song_list = song_list)
 
 #搜索

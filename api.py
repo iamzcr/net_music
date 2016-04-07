@@ -45,6 +45,25 @@ class NetEase:
         connection = json.loads(connection.text)
         return connection
 
+    #获取榜单信息
+    def hot_song(self):
+        action = 'http://music.163.com/api/toplist/'
+        try:
+            data = self.httpRequest('GET', action)
+            return data['list']
+        except:
+            return []
+
+    #获取榜单歌曲
+    def hot_song_list(self,hot_id):
+        action = 'http://music.163.com/api/toplist/id'+str(hot_id)
+        try:
+            data = self.httpRequest('GET', action)
+            print data
+            return data['list']
+        except:
+            return []
+
     #获取最热歌手
     def top_artists(self, offset=0, limit=100):
         action = 'http://music.163.com/api/artist/top?offset=' + str(offset) + '&total=false&limit=' + str(limit)

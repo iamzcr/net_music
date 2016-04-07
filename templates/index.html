@@ -1,5 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+<div class="container">
+    <div class="jumbotron">
+      <h1>Net Music!</h1>
+        <p>听见好时光</p>
+      <p><a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Login</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% if hot_music_list %}
+                {% for hot_music in hot_music_list %}
+                          <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                              <img src="{{ hot_music.coverImgUrl }}" alt="{{ hot_music.name }}">
+                              <div class="caption">
+                                <h4>{{ hot_music.name }}</h4>
+                                <p><a href="{{ url_for('top_music_list',hot_id = hot_music.id) }}" class="btn btn-primary" role="button">View</a></p>
+                              </div>
+                            </div>
+                          </div>
+                {% endfor %}
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
