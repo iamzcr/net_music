@@ -15,3 +15,5 @@ python view.py
 <p>获取歌手的50首热门歌曲</p>
 <p>网易用户登陆（未完成）</p>
 <p>获取用户歌单（未完成</p>
+#原轮子
+https://github.com/bluetomlee/NetEase-MusicBox
