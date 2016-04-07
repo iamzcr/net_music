@@ -19,19 +19,20 @@
   			<thead>
   				<th class="active">歌手id</th>
   				<th class="active">歌手名字</th>
-  				<th class="active">歌曲数量</th>
+
   				<th class="active">头像</th>
+                <th class="active">歌曲数量</th>
   				<th class="active">操作</th>
   			</thead>
   			<tbody>
   				{% if singer_list %}
   				{% for singer in singer_list %}
 				<tr>
-				  <td class="active">{{singer.id}}</td>
-				  <td class="active">{{singer.name}}</td>
-				  <td class="active">{{singer.musicSize}}</td>
-				  <td class="active"><img width="80px" src="{{singer.picUrl}}"></td>
-				  <td class="active"><a  href="{{ url_for('song_list',singer_id=singer.id) }}">查看单曲</a></td>
+				    <td class="active">{{singer.id}}</td>
+				    <td class="active">{{singer.name}}</td>
+                    <td class="active"><img width="80px" src="{{singer.picUrl}}"></td>
+				    <td class="active">{{singer.musicSize}}</td>
+				    <td class="active"><a  href="{{ url_for('song_list',singer_id=singer.id) }}" class="btn btn-primary">查看歌曲</a></td>
 				</tr>
 				 {% endfor %}
 				{% endif %}

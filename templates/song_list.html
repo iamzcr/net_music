@@ -1,28 +1,21 @@
 {% extends "layout.html" %}
-
 {% block body %}
 <div class="container">
 	<div class="page-header">
-	
 		<div class="list-group">
 			<a class="list-group-item active">
 			    <h4 class="list-group-item-heading">歌手歌曲</h4>
 			</a>
-	  
 	 	 </div>
-		 
 	</div>
 </div>
-
 <div class="container">
   		<table class=" table table-hover">
   			<thead>
-
   				<th class="active">歌曲ID</th>
   				<th class="active">歌曲</th>
                 <th class="active">歌手</th>
                 <th class="active">头像</th>
-  				<th class="active">mp3url</th>
   				<th class="active">操作</th>
   			</thead>
   			<tbody>
@@ -33,7 +26,6 @@
 				  <td class="active">{{song.name}}</td>
 				  <td class="active">{{song.artists[0].name}}</td>
 				  <td class="active"><img width="80px" src="{{song.album.blurPicUrl}}"></td>
-				  <td class="active">{{song.mp3Url}}</td>
 				  <td class="active"><audio src="{{song.mp3Url}}"controls = 'controls'>播放</audio></td>
 				</tr>
 				 {% endfor %}

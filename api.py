@@ -9,9 +9,10 @@ def uniq(arr):
     arr2 = list(set(arr))
     arr2.sort(key=arr.index)
     return arr2
-
 default_timeout = 10
+
 class NetEase:
+
     def __init__(self):
         self.header = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -43,6 +44,8 @@ class NetEase:
         connection.encoding = "UTF-8"
         connection = json.loads(connection.text)
         return connection
+
+    #获取最热歌手
     def top_artists(self, offset=0, limit=100):
         action = 'http://music.163.com/api/artist/top?offset=' + str(offset) + '&total=false&limit=' + str(limit)
         try:
@@ -50,6 +53,8 @@ class NetEase:
             return data['artists']
         except:
             return []
+
+    #获取歌手曲目
     def artists(self, artist_id):
         action = 'http://music.163.com/api/artist/' + str(artist_id)
         try:
@@ -57,6 +62,47 @@ class NetEase:
             return data['hotSongs']
         except:
             return []
+
+    #获取歌单
+    def top_playlists(self, category='全部', order='hot', offset=0, limit=50):
+        action = 'http://music.163.com/api/playlist/list?cat=' + category + '&order=' + order + '&offset=' + str(offset) + '&total=' + ('true' if offset else 'false') + '&limit=' + str(limit)
+        try:
+            data = self.httpRequest('GET', action)
+            return data['playlists']
+        except:
+            return []
+
+    #根据分类获取歌单
+    def get_play_category(self,data):
+        temp = [];
+        for res in data:
+            print res['updateTime']
+            for tag in res['tags']:
+                temp.append(tag)
+        return uniq(temp)
+
+    #获取歌单列表
+    def get_play_song_list(self,play_id):
+        action = 'http://music.163.com/api/playlist/detail?id=' + str(play_id)
+        try:
+            data = self.httpRequest('GET', action)
+            return data['result']['tracks']
+        except:
+            return []
+
+    #搜索
+    def get_search(self, s, stype=1, offset=0, total='true', limit=60):
+        action = 'http://music.163.com/api/search/get/web'
+        data = {
+            's': s,
+            'type': stype,
+            'offset': offset,
+            'total': total,
+            'limit': 60
+        }
+        return self.httpRequest('POST', action, data)
+
+    #用户登录
     def user_login(self, username, password):
         action = 'http://music.163.com/api/login/'
         data = {
@@ -69,6 +115,7 @@ class NetEase:
         except:
             return False
 
+    #用户歌单
     def user_playlist(self, uid, offset=0, limit=100):
         action = 'http://music.163.com/api/user/playlist/?offset=' + str(offset) + '&limit=' + str(limit) + '&uid=' + str(uid)
         try:
@@ -77,13 +124,4 @@ class NetEase:
         except:
             return []
 
-    def get_search(self, s, stype=1, offset=0, total='true', limit=60):
-        action = 'http://music.163.com/api/search/get/web'
-        data = {
-            's': s,
-            'type': stype,
-            'offset': offset,
-            'total': total,
-            'limit': 60
-        }
-        return self.httpRequest('POST', action, data)
+

@@ -19,13 +19,13 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">Brand</a>
+	      <a class="navbar-brand" href="{{ url_for('index') }}">Net Music</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+	        <li><a href="{{ url_for('play_list')}}">歌单 <span class="sr-only">(current)</span></a></li>
 	        <li><a href="{{ url_for('singer')}}">歌手</a></li>
 	      </ul>
             <form class="navbar-form navbar-left" method="get" action="{{ url_for('search') }}" role="search">
