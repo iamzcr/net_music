@@ -54,9 +54,9 @@ class NetEase:
         except:
             return []
 
-    #获取榜单歌曲
+    #获取榜单歌曲，此接口不知道是哪一个
     def hot_song_list(self,hot_id):
-        action = 'http://music.163.com/api/toplist/id'+str(hot_id)
+        action = 'http://music.163.com/api/discover/toplist/?id='+str(hot_id)
         try:
             data = self.httpRequest('GET', action)
             print data

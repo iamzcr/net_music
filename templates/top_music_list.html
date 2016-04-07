@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+	<div class="page-header">
+		<div class="list-group">
+			<a class="list-group-item active">
+			    <h4 class="list-group-item-heading">歌手歌曲</h4>
+			</a>
+	 	 </div>
+	</div>
+</div>
+    {{ hot_music_list }}
+<div class="container">
+  		<table class=" table table-hover">
+  			<thead>
+  				<th class="active">歌曲ID</th>
+  				<th class="active">歌曲</th>
+                <th class="active">歌手</th>
+                <th class="active">头像</th>
+  				<th class="active">操作</th>
+  			</thead>
+  			<tbody>
+  				{% if hot_music_list %}
+  				{% for hot_music in hot_music_list %}
+				<tr>
 
-</body>
-</html>
+				  <td class="active">{{hot_music.name}}</td>
+
+				</tr>
+				 {% endfor %}
+				{% endif %}
+  			</tbody>
+		</table>
+</div>
+{% endblock %}

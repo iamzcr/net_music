@@ -14,6 +14,9 @@ python view.py
 <p>获取歌单详情</p>
 <p>获取歌手的50首热门歌曲</p>
 <p>网易用户登陆（未完成）</p>
-<p>获取用户歌单（未完成</p>
+<p>获取用户歌单（未完成)</p>
+<p>获取某个排行榜的歌曲列表的api不知道是哪个，希望有人能提供完善一下</p>
 #原轮子
 https://github.com/bluetomlee/NetEase-MusicBox
+#ps
+<p>感谢<a href="http://music.163.com/#/">网易云音乐</a>提供接口，禁止侵权，仅限个人使用</p>

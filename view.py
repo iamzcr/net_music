@@ -9,12 +9,13 @@ app.secret_key = 'my is  some_secret'
 #首页，获取榜单信息
 @app.route('/')
 def index():
-	hot_music_list = NetEase.hot_song(NetEase())
-	return render_template("index.html",hot_music_list = hot_music_list)
-
-#获取榜单歌曲
+    hot_music_list = NetEase.hot_song(NetEase())
+    hot_music_list = None
+    return render_template("index.html",hot_music_list = hot_music_list)
+#获取榜单歌曲，此接口不知道是哪一个
 @app.route('/top_music_list/<hot_id>',methods=['GET', 'POST'])
 def top_music_list(hot_id):
+    temp = NetEase.top_songlist(NetEase())
     hot_music_list = NetEase.hot_song_list(NetEase(),hot_id)
     return render_template("top_music_list.html",hot_music_list = hot_music_list)
 
