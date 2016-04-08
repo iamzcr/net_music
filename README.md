@@ -1,6 +1,6 @@
 #网易云音乐web
 <p>呦呦呦.......</p>
-<p>![](https://github.com/iamzcr/net_music/raw/master/net_music.png)</p>
+![](https://github.com/iamzcr/net_music/raw/master/net_music.png)
 
 
 #git
