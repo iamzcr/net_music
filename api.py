@@ -43,6 +43,7 @@ class NetEase:
 
         connection.encoding = "UTF-8"
         connection = json.loads(connection.text)
+        print( connection )
         return connection
 
     #获取榜单信息

@@ -14,7 +14,27 @@
 	</div>
 </div>
     <div class="container">
-{{ search_list }}
+
+            <table class=" table table-hover">
+  			<thead>
+  				<th class="active">歌曲ID</th>
+  				<th class="active">歌曲</th>
+                <th class="active">歌手</th>
+  				<th class="active">操作</th>
+  			</thead>
+  			<tbody>
+  				{% if search_list %}
+  				{% for song in search_list %}
+				<tr>
+				  <td class="active">{{song.id}}</td>
+				  <td class="active">{{song.name}}</td>
+				  <td class="active">{{song.artists[0].name}}</td>
+				  <td class="active"><audio src="{{song.mp3Url}}"controls = 'controls'>播放</audio></td>
+				</tr>
+				 {% endfor %}
+				{% endif %}
+  			</tbody>
+		</table>
     </div>
 
 {% endblock %}

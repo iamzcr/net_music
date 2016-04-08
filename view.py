@@ -10,12 +10,10 @@ app.secret_key = 'my is  some_secret'
 @app.route('/')
 def index():
     hot_music_list = NetEase.hot_song(NetEase())
-    hot_music_list = None
     return render_template("index.html",hot_music_list = hot_music_list)
 #获取榜单歌曲，此接口不知道是哪一个
 @app.route('/top_music_list/<hot_id>',methods=['GET', 'POST'])
 def top_music_list(hot_id):
-    temp = NetEase.top_songlist(NetEase())
     hot_music_list = NetEase.hot_song_list(NetEase(),hot_id)
     return render_template("top_music_list.html",hot_music_list = hot_music_list)
 
@@ -55,25 +53,20 @@ def search():
     if request.method == "GET":
         s = request.args.get('s')
         search_list = NetEase.get_search(NetEase(),s)
-        file_handle = open('test.json','a+')
-        for search in search_list:
-            print  search
-            file_handle.write(search)
-        file_handle.close()
-        return render_template('search.html',search_list = search_list.songs)
+        return render_template('search.html',search_list = search_list['result']['songs'])
     else:
-        return render_template('search.html')
+        return render_template('search.html',search_list = None)
 
 #登录
 @app.route('/login',methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        username = request.form['username']
+        phone = request.form['phone']
         password = request.form['password']
-        if username and password:
-            data = NetEase.user_login(NetEase(),username,password)
+        if phone and password:
+            data = NetEase.user_login(NetEase(),phone,password)
             if data is not True:
-                session['username'] = username
+                session['phone'] = phone
                 return redirect(url_for('user_song_list'))
             else:
                 flash('Password or Phone is not ture')
