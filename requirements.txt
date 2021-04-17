@@ -10,7 +10,7 @@ django-editor==0.1
 django-tinymce==1.5.3
 enum==0.4.6
 enum34==1.0.4
-Flask==0.10.1
+Flask==1.0
 Flask-SQLAlchemy==2.0
 Flask-WTF==0.12
 grizzled-python==1.0.1
