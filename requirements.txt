@@ -47,7 +47,7 @@ pyttsx==1.1
 pytz==2014.10
 PyWapFetion==0.9.6
 pywin32==219
-PyYAML==3.11
+PyYAML==5.4
 queuelib==1.2.2
 requests==2.7.0
 Scrapy==0.24.5
