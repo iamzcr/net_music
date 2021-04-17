@@ -20,5 +20,4 @@ python view.py
 原轮子
 https://github.com/bluetomlee/NetEase-MusicBox
 
-ps
 <p>感谢<a href="http://music.163.com/#/">网易云音乐</a>提供接口，禁止侵权，仅限个人使用</p>
