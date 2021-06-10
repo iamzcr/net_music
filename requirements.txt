@@ -5,7 +5,7 @@ characteristic==14.3.0
 cryptography==0.8
 cssselect==0.9.1
 cx-Freeze==4.3.3
-Django==1.7.5
+Django==2.2.24
 django-editor==0.1
 django-tinymce==1.5.3
 enum==0.4.6
